@@ -117,5 +117,6 @@ for team in teams:
     # Increment
     iterations += 1
 
+# Print
 for output in outputs:
     print(output)
