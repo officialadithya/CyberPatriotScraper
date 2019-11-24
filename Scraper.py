@@ -53,6 +53,8 @@ print("\n\n")
 # Initialize a counter for iterations
 iterations = 0
 
+# Initialize list for final output
+outputs = []
 # For each team's data:
 for team in teams:
 
@@ -72,48 +74,48 @@ for team in teams:
     # Delete useless information (Divison, School Category, Amount of Images Scored)
     del team[3:7]
 
-    # Initialize stats with the list
-    rank = team[0]
-    teamNumber = team[1]
-    location = team[2]
-    time = team[3]
+    # Accomodates for user error in entering the teams
+    try:
+        # Initialize stats with the list
+        rank = team[0]
+        teamNumber = team[1]
+        location = team[2]
+        time = team[3]
 
-    # Accomodate for null value of warning
-    if "M" or "T" not in team:
-        warning = "N/A"
-        ccsScore = team[4]
-        administrativeAdjustment = team[5]
-        ciscoScore = team[6]
-        totalScore = team[7]
-    else:
-        warning = team[4]
-        ccsScore = team[5]
-        administrativeAdjustment = team[6]
-        ciscoScore = team[7]
-        totalScore = team[8]
+        # Accomodate for null value of warning
+        if "M" or "T" not in team:
+            warning = "N/A"
+            ccsScore = team[4]
+            administrativeAdjustment = team[5]
+            ciscoScore = team[6]
+            totalScore = team[7]
+        else:
+            warning = team[4]
+            ccsScore = team[5]
+            administrativeAdjustment = team[6]
+            ciscoScore = team[7]
+            totalScore = team[8]
+    except:
+        print("""
+        Please verify:
+
+            Team numbers were properly entered.
+            The division was properly entered.
+            All teams entered are in the same division.
+            All teams have competed.
+
+        """)
+        exit()
 
     # Calculate national percentile
     nationalPercentile = str((100-((int(rank)/amountofCompetingTeams)*100)))
 
     # Generate table
-    print(tabulate([[teamNumber, rank, location, time, warning, ccsScore, administrativeAdjustment, ciscoScore, totalScore, nationalPercentile]], headers=['Team-Number', 'Rank', 'Location', 'Time', 'Warning', 'CCS Score', 'Administrative-Adjustment', 'Cisco-Score', 'Total-Score', 'National-Percentile']))
-
-    # Newline
-    print("\n")
-
+    outputs.append(tabulate([[teamNumber, rank, location, time, warning, ccsScore, administrativeAdjustment, ciscoScore, totalScore, nationalPercentile]], headers=['Team-Number', 'Rank', 'Location', 'Time', 'Warning', 'CCS Score', 'Administrative-Adjustment', 'Cisco-Score', 'Total-Score', 'National-Percentile']))
+    outputs.append("\n")
+    
     # Increment
     iterations += 1
 
-# Accomodates for user error in entering the teams
-if amountOfTeamsQueried > len(teams):
-    print("""
-
-    Please verify:
-
-        Team numbers were properly entered.
-        The division was properly entered.
-        All teams entered are in the same division.
-        All teams have competed.
-
-    """)
-    exit()
+for output in outputs:
+    print(output)
