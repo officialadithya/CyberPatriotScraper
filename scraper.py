@@ -50,7 +50,7 @@ def scrape(queries, division):
     # Initialize list for Final Output
     outputs = []
 
-    # Initialize list of teams -- To be Used for REFINED and SORTED Team Data
+    # Initialize list of Teams -- To be Used for REFINED and SORTED Team Data
     refinedTeams = []
 
     # For Each Team's Data
@@ -62,7 +62,7 @@ def scrape(queries, division):
         # Get Rid of Garbage Characters -- queries[iterations] accomodates for Each Team
         team = team.replace(" ", "_")
         team = team.replace("<tr_class=\"clickable\"_href=\"team.php?team=13-%s\"><td>"%(queries[iterations])," ")
-        team = team.replace('</td><td>',' ')
+        team = team.replace("</td><td>"," ")
         team = team.replace("<b>"," ")
         team = team.replace("</b>", " ")
         team = team.replace("</td></tr>"," ")
