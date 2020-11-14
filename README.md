@@ -4,9 +4,9 @@ This bundle is meant to be used to get statistics of different CyberPatriot team
 	Required Dependencies:
 
 		python3
-    		requests
-    		bs4
-    		tabulate
+    	requests
+    	bs4
+    	tabulate
 		pinger.py
 		scraper.py
     
