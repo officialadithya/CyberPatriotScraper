@@ -16,7 +16,7 @@ requests is a module that is used to get the HTML content of the scoreboard. If 
 
 bs4 is a module that is used to parse the HTML content of the scoreboard. If not installed already, run 'pip install bs4' or 'pip3 install bs4'
 
-tabulate is a module that is used to output the results in an easy-to-read format.
+tabulate is a module that is used to output the results in an easy-to-read format. If not installed already, run 'pip install tabulate' or 'pip3 install tabulate'
 
 pinger.py is optional. It can be used to generate a live scoreboard. If the user does not desire a live scoreboard, scraper.py can be used standalone.
 
