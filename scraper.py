@@ -75,7 +75,7 @@ def scrape(queries, division):
         iterations += 1
 
     # Sort by Rank
-    refinedTeams.sort(key=lambda x: int(x[-1]), reverse=True)
+    refinedTeams.sort(key=lambda x: float(x[-1]), reverse=True)
 
     # Assign Values to Indices
     for team in refinedTeams:
@@ -90,11 +90,26 @@ def scrape(queries, division):
             time = team[6]
 
             if len(team) == 9:
+                # Accounting for Warnings
                 warning = team[7]
                 ccsScore = team[8]
+                # Accounting for Cisco
+                if len(team) == 12:
+                    adjust = team[9]
+                    cisco = team[10]
+                    total = team[11]
+                else: adjust, cisco, total = "N/A"
+
             else:
+                # Accounting for Warnings
                 warning = "N/A"
                 ccsScore = team[7]
+                # Accounting for Cisco
+                if len(team) == 11:
+                    adjust = team[8]
+                    cisco = team[9]
+                    total = team[10]
+                else: adjust, cisco, total = "N/A"
 
             # Calculate National Percentile
             nationalPercentile = str((100-((int(rank)/amountofCompetingTeams)*100)))
@@ -112,7 +127,7 @@ def scrape(queries, division):
 
 
         # Generate Table
-        outputs.append(tabulate([[teamNumber, rank, tier, location, time, warning, ccsScore, nationalPercentile]], headers=["Team-Number", "Rank", "Tier", "Location", "Time", "Warning", "CCS Score", "National-Percentile"]))
+        outputs.append(tabulate([[teamNumber, rank, tier, location, time, warning, ccsScore, adjust, cisco, total, nationalPercentile]], headers=["Team Number", "Rank", "Tier", "Location", "Time", "Warning", "CCS Score", "Adjustment", "Cisco Score", "Total Score", "National-Percentile"]))
         outputs.append("\n")
 
 
