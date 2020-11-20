@@ -98,7 +98,7 @@ def scrape(queries, division):
                     adjust = team[9]
                     cisco = team[10]
                     total = team[11]
-                else: adjust, cisco, total = "N/A", "N/A", "N/A"
+                else: adjust, cisco, total = "N/A", "N/A", ccsScore
 
             else:
                 # Accounting for Warnings
@@ -109,7 +109,7 @@ def scrape(queries, division):
                     adjust = team[8]
                     cisco = team[9]
                     total = team[10]
-                else: adjust, cisco, total = "N/A", "N/A", "N/A"
+                else: adjust, cisco, total = "N/A", "N/A", ccsScore
 
             # Calculate National Percentile
             nationalPercentile = str((100-((int(rank)/amountofCompetingTeams)*100)))
