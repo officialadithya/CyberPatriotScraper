@@ -98,7 +98,7 @@ def scrape(queries, division):
                     adjust = team[9]
                     cisco = team[10]
                     total = team[11]
-                else: adjust, cisco, total = "N/A", "N/A", ccsScore
+                else: adjust, cisco, total = "TBD", "TBD", ccsScore
 
             else:
                 # Accounting for Warnings
@@ -109,7 +109,7 @@ def scrape(queries, division):
                     adjust = team[8]
                     cisco = team[9]
                     total = team[10]
-                else: adjust, cisco, total = "N/A", "N/A", ccsScore
+                else: adjust, cisco, total = "TBD", "TBD", ccsScore
 
             # Calculate National Percentile
             nationalPercentile = str((100-((int(rank)/amountofCompetingTeams)*100)))
@@ -127,7 +127,7 @@ def scrape(queries, division):
 
 
         # Generate Table
-        outputs.append(tabulate([[teamNumber, rank, tier, location, time, warning, ccsScore, adjust, cisco, total, nationalPercentile]], headers=["Team Number", "Rank", "Tier", "Location", "Time", "Warning", "CCS Score", "Adjustment", "Cisco Score", "Total Score", "National-Percentile"]))
+        outputs.append(tabulate([[teamNumber, rank, tier, location, time, warning, ccsScore, adjust, cisco, total, nationalPercentile]], headers=["Team Number", "Rank", "Tier", "Location", "Time", "Warning", "CCS Score", "Adjustment", "Cisco Score", "Total Score", "National Percentile"]))
         outputs.append("\n")
 
 
